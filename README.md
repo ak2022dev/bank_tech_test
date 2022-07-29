@@ -31,7 +31,7 @@ date || credit || debit || balance
 
 10/01/2023 || 1000.00 || || 1000.00
 
-## Initial design ideas
+## Design ideas 1
     Account
         Linked to a Bank (branch)
         Has a unique number
@@ -48,5 +48,11 @@ date || credit || debit || balance
         Contains a number of accounts
         Has a unique sort-code
         Starts off with no accounts
+
+### Design diagram 1
+![Class Diagram 1](ClassDiagram1.png "Class Diagram 1")
+
+## Design ideas 2
+The above diagram does not yet include transactions. It is possible that there may be an appropriate design pattern to use and this will be part of deliberation before possibly adding that to the design.
 
 
