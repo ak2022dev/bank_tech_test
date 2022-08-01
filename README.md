@@ -55,4 +55,9 @@ date || credit || debit || balance
 ## Design ideas 2
 The above diagram does not yet include transactions. It is possible that there may be an appropriate design pattern to use and this will be part of deliberation before possibly adding that to the design.
 
+## Design ideas 3
+Transactions may benefit from the use of the Command design pattern, to enable transactions besides simple deposits and withdrawals (e.g. tax deduction, interest adding, balance transfers etc.) so may be preferable to return to that class later.
 
+Also Statement may benefit from the use of either Template or Strategy design pattern, to allow different formats of statement, which is a very likely requirement to want to add. For now may be preferable to return to that class later.
+
+Customer as above may be simplified to adhere to the SRP (Single Responsibility Principle) as currently any change in how names or addresses are represented would result in Customer needing to be changed. Address and Name would be better as independent classes.
