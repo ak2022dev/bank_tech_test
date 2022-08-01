@@ -61,3 +61,16 @@ Transactions may benefit from the use of the Command design pattern, to enable t
 Also Statement may benefit from the use of either Template or Strategy design pattern, to allow different formats of statement, which is a very likely requirement to want to add. For now may be preferable to return to that class later.
 
 Customer as above may be simplified to adhere to the SRP (Single Responsibility Principle) as currently any change in how names or addresses are represented would result in Customer needing to be changed. Address and Name would be better as independent classes.
+
+## TDD implementation 1
+### Name class
+Allow a required first, optional middle (maybe more than one) and optional last name. 
+
+Validate the inputs according to reasonable English language expectations. 
+
+First name should consist of a sequence of alphabet characters with the first a capital letter. There should be no spaces in the name and any spaces at start and end should be removed. The name may include one or more '-' characters but not more than one next to each other, and not at the start or end of the name.
+
+Middle names should optionally consist of one or more names separated by spaces, with each name similar to a First name, i.e. start with capital letter and allow dash or dashes as above.
+
+Last name is optional but if present follows same validation rule as First name.
+
