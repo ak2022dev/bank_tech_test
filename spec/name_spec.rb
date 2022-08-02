@@ -8,6 +8,14 @@ RSpec.describe Name do
       name = Name.new
       expect(name.first).to eq ""
     end
+    it "Initialises with blank middle names" do
+      name = Name.new
+      expect(name.middle).to eq ""
+    end
+    it "Initialises with blank last name" do
+      name = Name.new
+      expect(name.last).to eq ""
+    end
   end
 end
 
