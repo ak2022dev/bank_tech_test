@@ -31,6 +31,26 @@ RSpec.describe Name do
       expect(name.last).to eq "Last"
     end
   end
+  context "It tests arguments passed to it begin with capital letter" do
+    it "Checks first name starts with capital letter" do
+      name = Name.new( "First", "Middle", "Last" )
+      first_letter = name.first[0]
+      is_capitalised = ( first_letter.upcase == first_letter )
+      expect(is_capitalised).to eq true
+    end
+    it "Checks middle name starts with capital letter" do
+      name = Name.new( "First", "Middle", "Last" )
+      first_letter = name.middle[0]
+      is_capitalised = ( first_letter.upcase == first_letter )
+      expect(is_capitalised).to eq true
+    end
+    it "Checks last name starts with capital letter" do
+      name = Name.new( "First", "Middle", "Last" )
+      first_letter = name.last[0]
+      is_capitalised = ( first_letter.upcase == first_letter )
+      expect(is_capitalised).to eq true
+    end
+  end
 end
 
   
