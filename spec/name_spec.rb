@@ -17,5 +17,20 @@ RSpec.describe Name do
       expect(name.last).to eq ""
     end
   end
+  context "It initialises with arguments passed to it" do
+    it "Initialises with the first name passed to it" do
+      name = Name.new( "first", "middle", "last" )
+      expect(name.first).to eq "first"
+    end
+    it "Initialises with the middle name passed to it" do
+      name = Name.new( "first", "middle", "last" )
+      expect(name.middle).to eq "middle"
+    end
+    it "Initialises with the last name passed to it" do
+      name = Name.new( "first", "middle", "last" )
+      expect(name.last).to eq "last"
+    end
+  end
 end
 
+  
