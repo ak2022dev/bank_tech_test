@@ -51,6 +51,29 @@ RSpec.describe Name do
       expect(is_capitalised).to eq true
     end
   end
+  context "It tests arguments passed to it are stripped of spaces at start and end" do
+    it "Checks first name is stripped of spaces at start and end" do
+      name = Name.new( "  First  ", "  Middle  ", "  Last  " )
+      first_letter = name.first[0]
+      last_letter = name.first[-1]
+      expect(first_letter).to eq "F"
+      expect(last_letter).to eq "t"
+    end
+    it "Checks middle name is stripped of spaces at start and end" do
+      name = Name.new( "  First  ", "  Middle  ", "  Last  " )
+      first_letter = name.middle[0]
+      last_letter = name.middle[-1]
+      expect(first_letter).to eq "M"
+      expect(last_letter).to eq "e"
+    end
+    it "Checks last name is stripped of spaces at start and end" do
+      name = Name.new( "  First  ", "  Middle  ", "  Last  " )
+      first_letter = name.last[0]
+      last_letter = name.last[-1]
+      expect(first_letter).to eq "L"
+      expect(last_letter).to eq "t"
+    end
+  end
 end
 
-  
+
