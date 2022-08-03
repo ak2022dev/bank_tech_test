@@ -95,6 +95,11 @@ RSpec.describe Name do
        last_name = name.last
        expect(Name.valid_last_name?(last_name)).to eq true
      end
+     it "Checks middle name is similar to first/last name but allows combination of a sequence separated by a space" do
+       name = Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" )
+       mid_name = name.middle
+       expect(Name.valid_mid_name?(mid_name)).to eq true
+     end
   end
 end
 

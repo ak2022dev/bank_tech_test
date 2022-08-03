@@ -19,5 +19,10 @@ class Name
     self.valid_first_name?(name)
   end
 
+  def self.valid_mid_name?( name )
+    ((name =~ /^[A-Z][a-z]*(-[A-z][a-z]*)*([ ][A-Z][a-z]*(-[A-Z][a-z]*)*)*$/) == 0) ? true : false 
+  end
+
+
 end
 
