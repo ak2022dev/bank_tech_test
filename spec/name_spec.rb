@@ -75,11 +75,26 @@ RSpec.describe Name do
     end
   end
   context "It tests no unexpected characters in name sequences" do
-    it "Checks first name starts with capital letter and contains only expected characters " do
+    it "Checks first name starts with capital letter and valid if remaining are alphabet characters " do
       name = Name.new( "First", "Middle", "Last" )
       first_name = name.first
       expect(Name.valid_first_name?(first_name)).to eq true
-   end
+    end
+    it "Checks last name starts with capital letter and valid if remaining are only alphabet characters " do
+      name = Name.new( "First", "Middle", "Last" )
+      last_name = name.last
+      expect(Name.valid_last_name?(last_name)).to eq true
+    end
+      it "Checks first name starts with capital letter and has valid combinations of hyphen and other characters " do
+        name = Name.new( "First-Another-First", "Middle", "Last" )
+        first_name = name.first
+        expect(Name.valid_first_name?(first_name)).to eq true
+     end
+     it "Checks last name starts with capital letter and has valid combinations of hyphen and other icharacters " do
+       name = Name.new( "First", "Middle", "Last-Another-Last" )
+       last_name = name.last
+       expect(Name.valid_last_name?(last_name)).to eq true
+     end
   end
 end
 

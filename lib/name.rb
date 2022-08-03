@@ -11,7 +11,12 @@ class Name
   end
 
   def self.valid_first_name?( name )
-    ((name =~ /[A-Z][a-z]*/) == 0) ? true : false 
+    ((name =~ /^[A-Z][a-z]*(-[A-z][a-z]*)*$/) == 0) ? true : false 
+  end
+
+  def self.valid_last_name?( name )
+    # Currently rules for last name same as for first name
+    self.valid_first_name?(name)
   end
 
 end
