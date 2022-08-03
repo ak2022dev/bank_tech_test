@@ -10,5 +10,9 @@ class Name
     @last = last.strip
   end
 
+  def self.valid_first_name?( name )
+    ((name =~ /[A-Z][a-z]*/) == 0) ? true : false 
+  end
+
 end
 

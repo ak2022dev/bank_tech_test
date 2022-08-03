@@ -74,6 +74,13 @@ RSpec.describe Name do
       expect(last_letter).to eq "t"
     end
   end
+  context "It tests no unexpected characters in name sequences" do
+    it "Checks first name starts with capital letter and contains only expected characters " do
+      name = Name.new( "First", "Middle", "Last" )
+      first_name = name.first
+      expect(Name.valid_first_name?(first_name)).to eq true
+   end
+  end
 end
 
 
