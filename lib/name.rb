@@ -11,6 +11,7 @@ class Name
   end
 
   def self.valid_first_name?( name )
+    # Allows names like "Mary-Sue"
     ((name =~ /^[A-Z][a-z]*(-[A-z][a-z]*)*$/) == 0) ? true : false 
   end
 
@@ -20,6 +21,7 @@ class Name
   end
 
   def self.valid_mid_name?( name )
+    # Allows names like "Patrick Smith-Jones"
     ((name =~ /^[A-Z][a-z]*(-[A-z][a-z]*)*([ ][A-Z][a-z]*(-[A-Z][a-z]*)*)*$/) == 0) ? true : false 
   end
 

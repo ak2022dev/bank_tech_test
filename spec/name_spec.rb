@@ -74,13 +74,13 @@ RSpec.describe Name do
       expect(last_letter).to eq "t"
     end
   end
-  context "It tests no unexpected characters in name sequences" do
-    it "Checks first name starts with capital letter and valid if remaining are alphabet characters " do
+  context "It tests only expected characters in name sequences" do
+    it "Checks first name starts with capital letter and is valid if remaining are alphabet characters " do
       name = Name.new( "First", "Middle", "Last" )
       first_name = name.first
       expect(Name.valid_first_name?(first_name)).to eq true
     end
-    it "Checks last name starts with capital letter and valid if remaining are only alphabet characters " do
+    it "Checks last name starts with capital letter and is valid if remaining are only alphabet characters " do
       name = Name.new( "First", "Middle", "Last" )
       last_name = name.last
       expect(Name.valid_last_name?(last_name)).to eq true
@@ -99,6 +99,21 @@ RSpec.describe Name do
        name = Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" )
        mid_name = name.middle
        expect(Name.valid_mid_name?(mid_name)).to eq true
+     end
+     it "Rejects first name if it contains unexpected characters" do
+       name = Name.new( "Fir_st", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" )
+       first_name = name.first
+       expect(Name.valid_first_name?(first_name)).to eq false
+     end
+     it "Rejects last name if it contains unexpected characters" do
+       name = Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "L?ast" )
+       last_name = name.last
+       expect(Name.valid_last_name?(last_name)).to eq false
+     end
+     it "Rejects middle name if it contains unexpected characters" do
+       name = Name.new( "First", "Middle-Second-Third3", "Last" )
+       mid_name = name.middle
+       expect(Name.valid_mid_name?(mid_name)).to eq false
      end
   end
 end
