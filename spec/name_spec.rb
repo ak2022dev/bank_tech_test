@@ -4,16 +4,18 @@ require 'name'
 
 RSpec.describe Name do
   context "It initialises with blank values by default" do
-    it "Initialises with a blank first name" do
-      name = Name.new
-      expect(name.first).to eq ""
+    it "Does not accept a name without a given first name" do
+      expect{Name.new(nil)}.to raise_error( RuntimeError, "First name must be given")
+    end
+    it "Does not accept a name without a given first name" do
+      expect{Name.new("")}.to raise_error( RuntimeError, "First name must be given")
     end
     it "Initialises with blank middle names" do
-      name = Name.new
+      name = Name.new("First")
       expect(name.middle).to eq ""
     end
     it "Initialises with blank last name" do
-      name = Name.new
+      name = Name.new("First")
       expect(name.last).to eq ""
     end
   end

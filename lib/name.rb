@@ -4,7 +4,10 @@ class Name
 
   attr_reader :first, :middle, :last
 
-  def initialize( first="", middle="", last="" )
+  def initialize( first, middle="", last="" )
+    if (first == "" || first == nil )
+      raise RuntimeError.new("First name must be given")
+    end
     @first = first.strip
     @middle = middle.strip
     @last = last.strip
