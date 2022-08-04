@@ -6,7 +6,7 @@ class Name
 
   def initialize( first, middle="", last="" )
     if (first == "" || first == nil )
-      raise RuntimeError.new("First name must be given")
+      raise ArgumentError.new("First name must be given")
     end
     @first = first.strip
     @middle = middle.strip

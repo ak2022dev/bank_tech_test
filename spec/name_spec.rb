@@ -5,10 +5,10 @@ require 'name'
 RSpec.describe Name do
   context "It initialises with blank values by default" do
     it "Does not accept a name without a given first name" do
-      expect{Name.new(nil)}.to raise_error( RuntimeError, "First name must be given")
+      expect{Name.new(nil)}.to raise_error( ArgumentError, "First name must be given")
     end
     it "Does not accept a name without a given first name" do
-      expect{Name.new("")}.to raise_error( RuntimeError, "First name must be given")
+      expect{Name.new("")}.to raise_error( ArgumentError, "First name must be given")
     end
     it "Initialises with blank middle names" do
       name = Name.new("First")
