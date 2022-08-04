@@ -8,6 +8,11 @@ class Name
     if (first == "" || first == nil )
       raise ArgumentError.new("First name must be given")
     end
+    if ((last == "" || last == nil))
+      if((middle != "" && middle != nil ))
+        raise ArgumentError.new("Middle name only allowed when first and last are both given")
+      end
+    end
     @first = first.strip
     @middle = middle.strip
     @last = last.strip
