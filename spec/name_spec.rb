@@ -109,19 +109,13 @@ RSpec.describe Name do
        expect(Name.valid_mid_name?(mid_name)).to eq true
      end
      it "Rejects first name if it contains unexpected characters" do
-       name = Name.new( "Fir_st", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" )
-       first_name = name.first
-       expect(Name.valid_first_name?(first_name)).to eq false
+       expect{ Name.new( "Fir_st", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "First name must be valid" )
      end
      it "Rejects last name if it contains unexpected characters" do
-       name = Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "L?ast" )
-       last_name = name.last
-       expect(Name.valid_last_name?(last_name)).to eq false
+       expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "La_st" ) }.to raise_error( ArgumentError, "Last name must be valid" )
      end
      it "Rejects middle name if it contains unexpected characters" do
-       name = Name.new( "First", "Middle-Second-Third3", "Last" )
-       mid_name = name.middle
-       expect(Name.valid_mid_name?(mid_name)).to eq false
+       expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-SixthSeventh_Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "Middle names must be valid" )
      end
   end
 end
