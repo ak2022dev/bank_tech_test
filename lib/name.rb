@@ -5,6 +5,13 @@ class Name
   attr_reader :first, :middle, :last
 
   def initialize( first, middle="", last="" )
+    checkNamePresence( first, middle, last );
+    @first = first.strip
+    @middle = middle.strip
+    @last = last.strip
+  end
+
+  def checkNamePresence( first, middle, last )
     if (first == "" || first == nil )
       raise ArgumentError.new("First name must be given")
     end
@@ -13,11 +20,8 @@ class Name
         raise ArgumentError.new("Middle name only allowed when first and last are both given")
       end
     end
-    @first = first.strip
-    @middle = middle.strip
-    @last = last.strip
-  end
-
+  end 
+  
   def self.valid_first_name?( name )
     # Allows names like "Mary-Sue"
     ((name =~ /^[A-Z][a-z]*(-[A-z][a-z]*)*$/) == 0) ? true : false 
