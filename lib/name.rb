@@ -7,13 +7,13 @@ class Name
 
 
   def initialize( first, middle="", last="" )
-    checkNamePresence( first, middle, last );
-    assignStrippedNames( first, middle, last );
-    validateNames( @first, @middle, @last );
+    check_name_presence( first, middle, last );
+    assign_stripped_names( first, middle, last );
+    validate_names( @first, @middle, @last );
   end
 
 
-  def checkNamePresence( first, middle, last )
+  def check_name_presence( first, middle, last )
     if (first == "" || first == nil )
       raise ArgumentError.new("First name must be given")
     end
@@ -25,14 +25,14 @@ class Name
   end 
   
 
-  def assignStrippedNames( first, middle, last )
+  def assign_stripped_names( first, middle, last )
     @first = first.strip
     @middle = middle.strip
     @last = last.strip
   end
 
 
-  def validateNames( first, middle, last )
+  def validate_names( first, middle, last )
     raise ArgumentError.new("First name must be valid") unless Name.valid_first_name?( first )
     raise ArgumentError.new("Middle names must be valid") unless Name.valid_mid_name?( middle )
     raise ArgumentError.new("Last name must be valid") unless Name.valid_last_name?( last )
