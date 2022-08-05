@@ -74,3 +74,8 @@ Middle names should optionally consist of one or more names separated by spaces,
 
 Last name is optional but if present follows same validation rule as First name.
 
+
+## TDD implementation 2
+### Address class
+Set basic validation on the first three fields but more precise validation for postcode.
+
