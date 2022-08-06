@@ -44,6 +44,39 @@ RSpec.describe Address do
       address1 = address.address1
       expect( address1 ).to eq nil
     end
+    it "Detects valid length of address2 field" do
+      address = Address.new("First line", "Second line", "District", "")
+      address2 = address.address2
+      is_ok = address.add2_length_ok?( address2 )
+      expect( is_ok ).to eq true
+    end
+    it "Detects invalid length of address2 field" do
+      address = Address.new("First line", "Second line too long.........................................................................................", "District", "")
+      address2 = address.address2
+      expect( address2 ).to eq nil
+    end
+    it "Detects valid length of district field" do
+      address = Address.new("First line", "Second line", "District", "")
+      district = address.district
+      is_ok = address.dist_length_ok?( district )
+      expect( is_ok ).to eq true
+    end
+    it "Detects invalid length of district field" do
+      address = Address.new("First line", "Second line", "District.........................................................................", "")
+      district = address.district
+      expect( district ).to eq nil
+    end
+    it "Detects valid length of postcode field" do
+      address = Address.new("First line", "Second line", "District", "AW9 3BV")
+      postcode = address.postcode
+      is_ok = address.pcode_length_ok?( postcode )
+      expect( is_ok ).to eq true
+    end
+    it "Detects invalid length of postcode field" do
+      address = Address.new("First line", "Second line", "District", "AW96 3DFEDS")
+      postcode = address.postcode
+      expect( postcode ).to eq nil
+    end
   end
 end
 
