@@ -32,6 +32,19 @@ RSpec.describe Address do
       expect(add2).to eq "PC5 9DC"
     end  
   end
+  context "It checks the lengths of arguments passed to it" do
+    it "Detects valid length of address1 field" do
+      address = Address.new("First line", "Second line", "District", "")
+      address1 = address.address1
+      is_ok = address.add1_length_ok?( address1 )
+      expect( is_ok ).to eq true
+    end
+    it "Detects invalid length of address1 field" do
+      address = Address.new("First line too long.........................................................................................", "Second line", "District", "")
+      address1 = address.address1
+      expect( address1 ).to eq nil
+    end
+  end
 end
 
 
