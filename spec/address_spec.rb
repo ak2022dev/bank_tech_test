@@ -36,7 +36,7 @@ RSpec.describe Address do
     it "Detects valid length of address1 field" do
       address = Address.new("First line", "Second line", "District", "")
       address1 = address.address1
-      is_ok = address.add1_length_ok?( address1 )
+      is_ok = address.length_ok?( address1, Address::MAX_ADD1_LENGTH )
       expect( is_ok ).to eq true
     end
     it "Detects invalid length of address1 field" do
@@ -47,7 +47,7 @@ RSpec.describe Address do
     it "Detects valid length of address2 field" do
       address = Address.new("First line", "Second line", "District", "")
       address2 = address.address2
-      is_ok = address.add2_length_ok?( address2 )
+      is_ok = address.length_ok?( address2, Address::MAX_ADD2_LENGTH )
       expect( is_ok ).to eq true
     end
     it "Detects invalid length of address2 field" do
@@ -58,7 +58,7 @@ RSpec.describe Address do
     it "Detects valid length of district field" do
       address = Address.new("First line", "Second line", "District", "")
       district = address.district
-      is_ok = address.dist_length_ok?( district )
+      is_ok = address.length_ok?( district, Address::MAX_DIST_LENGTH )
       expect( is_ok ).to eq true
     end
     it "Detects invalid length of district field" do
@@ -69,7 +69,7 @@ RSpec.describe Address do
     it "Detects valid length of postcode field" do
       address = Address.new("First line", "Second line", "District", "AW9 3BV")
       postcode = address.postcode
-      is_ok = address.pcode_length_ok?( postcode )
+      is_ok = address.length_ok?( postcode, Address::MAX_PCODE_LENGTH )
       expect( is_ok ).to eq true
     end
     it "Detects invalid length of postcode field" do
