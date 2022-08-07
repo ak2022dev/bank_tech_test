@@ -97,26 +97,33 @@ RSpec.describe Name do
         name = Name.new( "First-Another-First", "Middle", "Last" )
         first_name = name.first
         expect(Name.valid_first_name?(first_name)).to eq true
-     end
-     it "Checks last name starts with capital letter and has valid combinations of hyphen and other icharacters " do
-       name = Name.new( "First", "Middle", "Last-Another-Last" )
-       last_name = name.last
-       expect(Name.valid_last_name?(last_name)).to eq true
-     end
-     it "Checks middle name is similar to first/last name but allows combination of a sequence separated by a space" do
-       name = Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" )
-       mid_name = name.middle
-       expect(Name.valid_mid_name?(mid_name)).to eq true
-     end
-     it "Rejects first name if it contains unexpected characters" do
-       expect{ Name.new( "Fir_st", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "First name must be valid" )
-     end
-     it "Rejects last name if it contains unexpected characters" do
-       expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "La_st" ) }.to raise_error( ArgumentError, "Last name must be valid" )
-     end
-     it "Rejects middle name if it contains unexpected characters" do
-       expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-SixthSeventh_Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "Middle names must be valid" )
-     end
+      end
+      it "Checks last name starts with capital letter and has valid combinations of hyphen and other icharacters " do
+        name = Name.new( "First", "Middle", "Last-Another-Last" )
+        last_name = name.last
+        expect(Name.valid_last_name?(last_name)).to eq true
+      end
+      it "Checks middle name is similar to first/last name but allows combination of a sequence separated by a space" do
+        name = Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" )
+        mid_name = name.middle
+        expect(Name.valid_mid_name?(mid_name)).to eq true
+      end
+      it "Rejects first name if it contains unexpected characters" do
+        expect{ Name.new( "Fir_st", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "First name must be valid" )
+      end
+      it "Rejects last name if it contains unexpected characters" do
+        expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-Sixth Seventh-Eighth-Ninth", "La_st" ) }.to raise_error( ArgumentError, "Last name must be valid" )
+      end
+      it "Rejects middle name if it contains unexpected characters" do
+        expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-SixthSeventh_Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "Middle names must be valid" )
+      end
+      context "It validates fields to check only permitted characters allowed" do
+        # Source: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/611951/Appendix_C_ILR_2017_to_2018_v1_Published_28April17.pdf 
+        it "does basic validation on postcodes"
+          pcode = "A9 5AB"
+          expect( Address.pcode_valid?(pcode) ).to eq true
+        end
+      end
   end
 end
 
