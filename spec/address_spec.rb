@@ -84,15 +84,10 @@ RSpec.describe Address do
         add2 = address.address2
         dist = address.district
         pcode = address.postcode
-        expect( Address.check_fields_present?( add1, add2, dist, pcode ) ).to eq true
+        expect( Address.check_fields_present( add1, add2, dist, pcode ) ).to eq true
       end
       it "Detects absence of required first line and district of address" do
-        address = Address.new("", "", "", "")
-        add1 = address.address1
-        add2 = address.address2
-        dist = address.district
-        pcode = address.postcode
-        expect( Address.check_fields_present?( add1, add2, dist, pcode ) ).to eq false
+        expect { Address.new("", "", "", "") }.to raise_error( ArgumentError, "Address1 and District field required in every address")
       end
     end
   end
