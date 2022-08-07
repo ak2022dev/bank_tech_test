@@ -10,10 +10,12 @@ class Address
   MAX_PCODE_LENGTH = 8
 
   def initialize( add1, add2 = "", district, postcode )
-    @address1 = add1 if length_ok?( add1, MAX_ADD1_LENGTH )
-    @address2 = add2 if length_ok?( add2, MAX_ADD2_LENGTH )
-    @district = district if length_ok?( district, MAX_DIST_LENGTH )
-    @postcode = postcode if length_ok?( postcode, MAX_PCODE_LENGTH )
+    if Address.check_fields_present?( add1, add2, district, postcode)
+      @address1 = add1 if length_ok?( add1, MAX_ADD1_LENGTH )
+      @address2 = add2 if length_ok?( add2, MAX_ADD2_LENGTH )
+      @district = district if length_ok?( district, MAX_DIST_LENGTH )
+      @postcode = postcode if length_ok?( postcode, MAX_PCODE_LENGTH )
+    end
   end
 
 
