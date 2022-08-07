@@ -21,5 +21,8 @@ class Address
     field.length <= max_len
   end
 
-end
+  def self.check_fields_present?( add1, add2, dist, pcode )
+    return (add1 != "" && add1 != nil && dist != "" && dist != nil)      
+  end
 
+end

@@ -77,6 +77,24 @@ RSpec.describe Address do
       postcode = address.postcode
       expect( postcode ).to eq nil
     end
+    context "It checks for presence of required fields" do
+      it "Checks for presence of required first line and district of address" do
+        address = Address.new("First line", "", "District", "")
+        add1 = address.address1
+        add2 = address.address2
+        dist = address.district
+        pcode = address.postcode
+        expect( Address.check_fields_present?( add1, add2, dist, pcode ) ).to eq true
+      end
+      it "Detects absence of required first line and district of address" do
+        address = Address.new("", "", "", "")
+        add1 = address.address1
+        add2 = address.address2
+        dist = address.district
+        pcode = address.postcode
+        expect( Address.check_fields_present?( add1, add2, dist, pcode ) ).to eq false
+      end
+    end
   end
 end
 
