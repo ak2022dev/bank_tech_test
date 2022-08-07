@@ -70,9 +70,6 @@ RSpec.describe Address do
       expect( is_ok ).to eq true
     end
     it "Detects invalid length of postcode field" do
-#      address = Address.new("First line", "Second line", "District", "AW96 3DFEDS")
-#      postcode = address.postcode
-#      expect( postcode ).to eq nil
       expect { Address.new("First line", "Second line", "District", "AW96 3DFEDS") }.to raise_error( ArgumentError, "Address fields need to be within permitted length.")
     end
     context "It checks for presence of required fields" do
