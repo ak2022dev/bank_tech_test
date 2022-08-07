@@ -72,20 +72,45 @@ RSpec.describe Address do
     it "Detects invalid length of postcode field" do
       expect { Address.new("First line", "Second line", "District", "AW96 3DFEDS") }.to raise_error( ArgumentError, "Address fields need to be within permitted length.")
     end
-    context "It checks for presence of required fields" do
-      it "Checks for presence of required first line and district of address" do
-        address = Address.new("First line", "", "District", "")
-        add1 = address.address1
-        add2 = address.address2
-        dist = address.district
-        pcode = address.postcode
-        expect( Address.check_fields_present( add1, add2, dist, pcode ) ).to eq true
-      end
-      it "Detects absence of required first line and district of address" do
-        expect { Address.new("", "", "", "") }.to raise_error( ArgumentError, "Address1 and District field required in every address")
-      end
+  end
+  context "It checks for presence of required fields" do
+    it "Checks for presence of required first line and district of address" do
+      address = Address.new("First line", "", "District", "")
+      add1 = address.address1
+      add2 = address.address2
+      dist = address.district
+      pcode = address.postcode
+      expect( Address.check_fields_present( add1, add2, dist, pcode ) ).to eq true
+    end
+    it "Detects absence of required first line and district of address" do
+      expect { Address.new("", "", "", "") }.to raise_error( ArgumentError, "Address1 and District field required in every address")
+    end
+  end
+  context "It validates fields to check only permitted characters allowed" do
+    # Source: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/611951/Appendix_C_ILR_2017_to_2018_v1_Published_28April17.pdf 
+    it "Validates AN NAA type" do
+      pcode = "A9 8BC"
+      expect( Address.pcode_valid?(pcode) ).to eq 0
+    end
+    it "Validates ANN NAA type" do
+      pcode = "B76 5CD"
+      expect( Address.pcode_valid?(pcode) ).to eq 0
+    end
+    it "Validates AAN NAA type" do
+      pcode = "EF4 3GH"
+      expect( Address.pcode_valid?(pcode) ).to eq 0
+    end
+    it "Validates AANN NAA type" do
+      pcode = "JK43 2LM"
+      expect( Address.pcode_valid?(pcode) ).to eq 0
+    end
+    it "Validates ANA NAA type" do
+      pcode = "N4P 1RS"
+      expect( Address.pcode_valid?(pcode) ).to eq 0
+    end
+    it "Validates AANA NAA type" do
+      pcode = "TV3P 2WX"
+      expect( Address.pcode_valid?(pcode) ).to eq 0
     end
   end
 end
-
-

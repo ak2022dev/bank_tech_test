@@ -117,13 +117,6 @@ RSpec.describe Name do
       it "Rejects middle name if it contains unexpected characters" do
         expect{ Name.new( "First", "Middle-Second-Third Fourth-Fifth-SixthSeventh_Eighth-Ninth", "Last" ) }.to raise_error( ArgumentError, "Middle names must be valid" )
       end
-      context "It validates fields to check only permitted characters allowed" do
-        # Source: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/611951/Appendix_C_ILR_2017_to_2018_v1_Published_28April17.pdf 
-        it "does basic validation on postcodes"
-          pcode = "A9 5AB"
-          expect( Address.pcode_valid?(pcode) ).to eq true
-        end
-      end
   end
 end
 
