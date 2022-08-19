@@ -82,3 +82,13 @@ Set basic validation on the first three fields but more precise validation for p
 
 ## Design ideas 4
 The NINumber field in the Customer class was chosen to give each Customer a unique identifier. However to make this easier to change, a Strategy pattern seems appropriate to use.
+
+
+## TDD implementation 3
+### Customer class
+Start gradually creating Customer class and classes it will be composed of, unit-testing these first.
+
+
+### CustomerIdStrategy and CustomerIdNI classes
+To implement the abstract and concrete classes for the Strategy design pattern, making future changes easy if required.
+
