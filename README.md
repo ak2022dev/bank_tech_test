@@ -79,3 +79,6 @@ Last name is optional but if present follows same validation rule as First name.
 ### Address class
 Set basic validation on the first three fields but more precise validation for postcode.
 
+
+## Design ideas 4
+The NINumber field in the Customer class was chosen to give each Customer a unique identifier. However to make this easier to change, a Strategy pattern seems appropriate to use.
