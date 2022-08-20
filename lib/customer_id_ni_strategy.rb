@@ -10,11 +10,16 @@ class CustomerIdNIStrategy < CustomerIdStrategy
   DEFAULT_NI = "QQ 12 34 56 A"  
 
   def initialize( ni_num = DEFAULT_NI )
-    @ni_num = ni_num
+    @ni_num = ni_num if CustomerIdNIStrategy.valid_ni_num?( ni_num )
   end
 
   def provide_id
     @ni_num
+  end
+
+  def self.valid_ni_num?( ni_num )
+    raise ArgumentError.new( "Incorrect format for NI number" ) unless ni_num =~ /^[A-Z][A-Z][ ][0-9][0-9][ ][0-9][0-9][ ][0-9][0-9][ ][A-Z]$/
+    true
   end
 
 end
