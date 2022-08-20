@@ -7,4 +7,8 @@ RSpec.describe CustomerIdNIStrategy do
     strat = CustomerIdNIStrategy.new
     expect( strat ).to respond_to( :provide_id )
   end
+  it "Provides a default NI number" do
+    strat = CustomerIdNIStrategy.new
+    expect( strat.provide_id ).to eq "QQ 12 34 56 A"
+  end
 end
