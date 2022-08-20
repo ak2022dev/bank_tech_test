@@ -89,6 +89,5 @@ The NINumber field in the Customer class was chosen to give each Customer a uniq
 Start gradually creating Customer class and classes it will be composed of, unit-testing these first.
 
 
-### CustomerIdStrategy and CustomerIdNI classes
-To implement the abstract and concrete classes for the Strategy design pattern, making future changes easy if required.
-
+### CustomerIdStrategy and CustomerIdNIStrategy classes
+To implement the abstract and concrete classes for the Strategy design pattern, making future changes easy if required. Added basic validation for UK NI numbers.
