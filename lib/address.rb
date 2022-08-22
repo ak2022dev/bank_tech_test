@@ -47,7 +47,7 @@ class Address
 
 
   def validate_postcode( pcode )
-    return true if pcode = ""
+    return true if pcode == ""
     # Simple validation for codes as specified on
     # https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/611951/Appendix_C_ILR_2017_to_2018_v1_Published_28April17.pdf 
     # return pcode =~ /(^[A-Z][0-9])|(^[A-Z][0-9][0-9])|(^[A-Z][A-Z][0-9])|(^[A-Z][A-Z][0-9][0-9])|(^[A-Z][0-9][A-Z])|([A-Z][A-Z][0-9][A-Z])[ ][0-9][A-Z][A-Z]$/

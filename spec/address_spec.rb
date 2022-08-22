@@ -86,7 +86,7 @@ RSpec.describe Address do
       expect { Address.new("", "", "", "") }.to raise_error( ArgumentError, "Address1 and District field required in every address")
     end
   end
-  context "It validates fields to check only permitted characters allowed" do
+  context "It validates postcodes to check only permitted characters allowed" do
     # Source: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/611951/Appendix_C_ILR_2017_to_2018_v1_Published_28April17.pdf 
     it "Validates AN NAA type" do
       address = Address.new("First line", "", "District", "A9 8BC")
@@ -117,6 +117,27 @@ RSpec.describe Address do
       address = Address.new("First line", "", "District", "TV3P 2WX" )
       pcode = address.postcode
       expect( address.validate_postcode( pcode) ).to eq true
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "3T W12" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "3TT X45" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "33T X45" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "33TW X45" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "3T3 X45" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "3T3 X45" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
+    end
+    it "Raises an error for invalid postcode" do
+      expect{ Address.new("First line", "", "District", "34T5 X78" ) }.to raise_error( ArgumentError, "Postcode needs to be valid." )
     end
   end
 end
