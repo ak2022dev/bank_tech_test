@@ -91,3 +91,8 @@ Start gradually creating Customer class and classes it will be composed of, unit
 
 ### CustomerIdStrategy and CustomerIdNIStrategy classes
 To implement the abstract and concrete classes for the Strategy design pattern, making future changes easy if required. Added basic validation for UK NI numbers.
+
+
+## Design ideas 5
+The Account class will be composed of a Customer and a sequence of Transactions. It will be created by a Bank, which will provide the Account with a unique number. It will be opened when it is first created and will retain records of its transactions even after it is closed, for reference purposes. Modelling a Transaction using the Command design pattern as mentioned above could have the additional benefit of potentially being able to undo a transaction if that is needed in the future.
+
