@@ -4,15 +4,18 @@ require 'customer_id_strategy'
 require 'customer_id_ni_strategy'
 require 'name'
 require 'date'
+require 'address'
 
 class Customer
 
-  attr_reader :id, :name, :dob
+  attr_reader :id, :name, :dob, :address
 
-  def initialize( first_name, middle_name = "", last_name = "", dob_year, dob_month, dob_day )
+  def initialize( first_name, middle_name = "", last_name = "", dob_year, dob_month, dob_day,
+                  address1, address2, district, postcode )
     set_id
     set_name( first_name, middle_name, last_name )
     set_dob( dob_year, dob_month, dob_day )
+    set_address( address1, address2, district, postcode )
   end
 
   private 
@@ -29,4 +32,8 @@ class Customer
     @dob = Date.new( dob_year, dob_month, dob_day )
   end
 
+  def set_address( address1, address2, district, postcode )
+    @address = Address.new( address1, address2, district, postcode )
+  end
+  
 end
