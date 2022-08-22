@@ -51,7 +51,7 @@ RSpec.describe Address do
     end
     it "Detects invalid length of address2 field" do
       expect { Address.new("First line", "Second line too long.........................................................................................", 
-               "District", "") }.to raise_error( ArgumentError, "Address fields need to be within permitted length.")
+               "District", "A9 8BC") }.to raise_error( ArgumentError, "Address fields need to be within permitted length.")
     end
     it "Detects valid length of district field" do
       address = Address.new("First line", "Second line", "District", "")
@@ -91,32 +91,32 @@ RSpec.describe Address do
     it "Validates AN NAA type" do
       address = Address.new("First line", "", "District", "A9 8BC")
       pcode = address.postcode
-      expect( address.validate_postcode( pcode) ).to eq 0
+      expect( address.validate_postcode( pcode) ).to eq true
     end
     it "Validates ANN NAA type" do
       address = Address.new("First line", "", "District", "B76 5CD" )
       pcode = address.postcode
-      expect( address.validate_postcode( pcode) ).to eq 0
+      expect( address.validate_postcode( pcode) ).to eq true
     end
     it "Validates AAN NAA type" do
       address = Address.new("First line", "", "District", "EF4 3GH" )
       pcode = address.postcode
-      expect( address.validate_postcode( pcode) ).to eq 0
+      expect( address.validate_postcode( pcode) ).to eq true
     end
     it "Validates AANN NAA type" do
       address = Address.new("First line", "", "District", "JK43 2LM" )
       pcode = address.postcode
-      expect( address.validate_postcode( pcode) ).to eq 0
+      expect( address.validate_postcode( pcode) ).to eq true
     end
     it "Validates ANA NAA type" do
       address = Address.new("First line", "", "District", "N4P 1RS" )
       pcode = address.postcode
-      expect( address.validate_postcode( pcode) ).to eq 0
+      expect( address.validate_postcode( pcode) ).to eq true
     end
     it "Validates AANA NAA type" do
       address = Address.new("First line", "", "District", "TV3P 2WX" )
       pcode = address.postcode
-      expect( address.validate_postcode( pcode) ).to eq 0
+      expect( address.validate_postcode( pcode) ).to eq true
     end
   end
 end
