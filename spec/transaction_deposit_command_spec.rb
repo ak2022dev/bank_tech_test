@@ -7,4 +7,8 @@ RSpec.describe TransactionDepositCommand do
     command = TransactionDepositCommand.new
     expect( command ).to respond_to( :transact )
   end
+  it "Returns an increased balance when a deposit is made" do
+    command = TransactionDepositCommand.new
+    expect( command.transact( 1000, 200 ) ).to eq 1200
+  end
 end
