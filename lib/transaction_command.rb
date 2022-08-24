@@ -2,7 +2,7 @@
 
 class TransactionCommand
 
-    def transact( balance_in )
+    def transact( balance_in, *args )
       # Will return the new balance
       # after the transaction has been completed
     end
