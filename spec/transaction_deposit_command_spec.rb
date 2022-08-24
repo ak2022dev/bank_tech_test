@@ -1,4 +1,4 @@
-# File: transaction_command_spec.rb
+# File: transaction_deposit_command_spec.rb
 
 require 'transaction_deposit_command'
 
