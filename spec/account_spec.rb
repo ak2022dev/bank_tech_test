@@ -30,6 +30,14 @@ RSpec.describe Account do
       transaction = TransactionDepositCommand.new
       account.transact( transaction )
       expect( account.transactions.first).to equal(transaction)
+      # TODO refactor to maintain balance
+    end
+  end
+  context "It keeps record of a balance" do
+    it "Starts off with zero balance" do
+      account = Account.new( "00000001", "First", 2020, 12, 31,
+                             "Address1", "", "District", "A9 8BC" )
+      expect( account.balance ).to eq 0.0
     end
   end
 end
