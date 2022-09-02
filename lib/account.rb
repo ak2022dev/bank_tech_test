@@ -14,4 +14,7 @@ class Account
     @transactions = []
   end
 
+  def transact( transaction )
+    transactions.push( transaction )
+  end
 end
