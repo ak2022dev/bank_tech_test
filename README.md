@@ -96,3 +96,16 @@ To implement the abstract and concrete classes for the Strategy design pattern, 
 ## Design ideas 5
 The Account class will be composed of a Customer and a sequence of Transactions. It will be created by a Bank, which will provide the Account with a unique number. It will be opened when it is first created and will retain records of its transactions even after it is closed, for reference purposes. Modelling a Transaction using the Command design pattern as mentioned above could have the additional benefit of potentially being able to undo a transaction if that is needed in the future. To support potential use of undo in future, and the state recording this would require, classes will be used for the Command pattern rather than procs, which Ruby provides.
 
+
+### Design diagram 2
+![Class Diagram 2](ClassDiagram2.png "Class Diagram 2")
+
+
+## TDD implementation 4
+### Account class
+Start gradually creating Account class and classes it will be composed of, unit-testing these first.
+
+
+### TransactionCommand, TransactionDepositCommand and TransactionWithdrawalCommand classes
+To implement the abstract and concrete classes for the Command design pattern, making future changes easy if required.
+
