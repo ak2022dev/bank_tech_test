@@ -3,10 +3,16 @@
 require 'transaction_command'
 
 class TransactionDepositCommand < TransactionCommand
-  def transact( balance_in, *args )
+
+  def initialize( *args )
+    @deposit = args[0]
+    raise ArgumentError.new( "Deposit needs to be greater than zero." ) if @deposit <= 0
+  end
+
+  def transact( balance_in )
     # Will return the new balance
     # after the deposit is made
-    return balance_in + args[0] if args[0] > 0
-    raise ArgumentError.new( "Deposit needs to be greater than zero." )
-  end  
+    return balance_in + @deposit
+  end
+  
 end

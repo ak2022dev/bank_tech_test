@@ -27,10 +27,14 @@ RSpec.describe Account do
     it "Remembers a transaction" do
       account = Account.new( "00000001", "First", 2020, 12, 31,
                              "Address1", "", "District", "A9 8BC" )
-      transaction = TransactionDepositCommand.new
+      transaction = TransactionDepositCommand.new( 1000 )
       account.transact( transaction )
       expect( account.transactions.first).to equal(transaction)
-      # TODO refactor to maintain balance
+    end
+    it "Can perform a transaction" do
+      account = Account.new( "00000001", "First", 2020, 12, 31,
+                             "Address1", "", "District", "A9 8BC" )
+      expect( account ).to respond_to( :transact )
     end
   end
   context "It keeps record of a balance" do
